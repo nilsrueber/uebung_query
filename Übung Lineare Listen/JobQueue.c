@@ -46,19 +46,27 @@ int pushJQ(JobQueue_t* pJQ, Job_t* pJob) {
 
 // Löscht den Job mit der obersten Priorität aus der Liste heraus und kopiert diesen!
 Job_t popJQ(JobQueue_t* pJQ) {
+
+	if (pJQ->first == NULL)
+	{
+		Job_t EmptyJob = { 0, "" };
+		return EmptyJob;
+	}
+
 	//Das zu löschende Element kopieren
 	QueueEl_t* pDeletedElement = pJQ->first;
+	Job_t TempJob = pDeletedElement->Job;
+
 
 	//Ausgabe des zu löschenden Elements
-	printf("Deleted Element: %s\n", pDeletedElement->Job.desc, pDeletedElement->Job.prio);
+	//printf("Deleted Element: %s\n", pDeletedElement->Job.desc, pDeletedElement->Job.prio);
 
 	//Löschen des Elements und das nächstegelende Element zum neuen "first" machen
 	pJQ->first = pDeletedElement->next;
+	free(pDeletedElement);
 
-
-	//Keine Ahnung wofür das hier ist?
-	Job_t job = { 0 };
-	return job;
+	pJQ->count--;
+	return TempJob;
 }
 
 

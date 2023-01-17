@@ -11,7 +11,7 @@ int main() {
 		Job_4 = { 3, "Schlafen" },
 		Job_5 = { 0 },
 		Job_6 = { 70, "Auto waschen" },
-		Job_7 = { 65, "Einen Runterholen" };
+		Job_7 = { 65, "Arbeiten" };
 
 	pushJQ(&jobQueue_1, &Job_2);
 	pushJQ(&jobQueue_1, &Job_3);
@@ -20,15 +20,16 @@ int main() {
 	pushJQ(&jobQueue_1, &Job_6);
 	pushJQ(&jobQueue_1, &Job_7);
 
+	printf("Job Queue 1: \n");
 	printJQ(&jobQueue_1);
 
-	popJQ(&jobQueue_1);
-	popJQ(&jobQueue_1);
+	
+	Job_5 = popJQ(&jobQueue_1);
 
-	pushJQ(&jobQueue_2, &Job_6);
-	pushJQ(&jobQueue_2, &Job_7);
+	printf("Job Queue 1 nach Pop: \n");
+	printJQ(&jobQueue_1);
 
-	printJQ(&jobQueue_2);
+	printf("%i \t%s wurde geloescht\n", Job_5.prio, Job_5.desc);
 
 
 	return 0;
