@@ -13,7 +13,7 @@ int pushJQ(JobQueue_t* pJQ, Job_t* pJob) {
 	if (pJQ->count == 0) {
 		//Zeiger auf NExt wird gesetz!
 		pNewElement->next = NULL;
-		//Der JobQueue werde neue Werte zugewiesen!
+		//Der JobQueue werden neue Werte zugewiesen!
 		pJQ->first = pNewElement;
 		pJQ->last = pNewElement;
 
@@ -46,7 +46,17 @@ int pushJQ(JobQueue_t* pJQ, Job_t* pJob) {
 
 // Löscht den Job mit der obersten Priorität aus der Liste heraus und kopiert diesen!
 Job_t popJQ(JobQueue_t* pJQ) {
+	//Das zu löschende Element kopieren
+	QueueEl_t* pDeletedElement = pJQ->first;
 
+	//Ausgabe des zu löschenden Elements
+	printf("Deleted Element: %s\n", pDeletedElement->Job.desc, pDeletedElement->Job.prio);
+
+	//Löschen des Elements und das nächstegelende Element zum neuen "first" machen
+	pJQ->first = pDeletedElement->next;
+
+
+	//Keine Ahnung wofür das hier ist?
 	Job_t job = { 0 };
 	return job;
 }
@@ -60,7 +70,7 @@ void printJQ(JobQueue_t* pJQ) {
 	else {
 		QueueEl_t* pEL = pJQ->first;			// Pointer pEL auf erstes Element aller Elemente in der Queue
 		for (; pEL != NULL; pEL = pEL->next) {				// Element für Element wird abgegangen, bis kein Element mehr das ist!
-			printf("%i\n%s\n", pEL->Job.prio, pEL->Job.desc);
+			printf("%i\t%s\n", pEL->Job.prio, pEL->Job.desc);
 		}
 	}
 }
