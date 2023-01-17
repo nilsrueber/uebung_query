@@ -23,17 +23,12 @@ int pushJQ(JobQueue_t* pJQ, Job_t* pJob) {
 	// In der Queue sind schon Elemente drin!
 	else {
 		pNewElement->next = pJQ->first;
-		for (; pNewElement->next != NULL && pNewElement->Job.prio < pNewElement->next->Job.prio; pNewElement->next = pNewElement->next->next) {
-			pVorherigesElement = pNewElement->next;
-			
-		}
+		for (; pNewElement->next != NULL && pNewElement->Job.prio < pNewElement->next->Job.prio; pNewElement->next = pNewElement->next->next) pVorherigesElement = pNewElement->next;
 		//Zeiger auf neues First?
 		if (pVorherigesElement == NULL) pJQ->first = pNewElement;
 		else pVorherigesElement->next = pNewElement;
 		//Zeiger auf neues Last?
-		if (pNewElement->next == NULL) {
-			pJQ->last = pNewElement;
-		}
+		if (pNewElement->next == NULL) pJQ->last = pNewElement;
 	}
 	pJQ->count++;
 	return 0;
