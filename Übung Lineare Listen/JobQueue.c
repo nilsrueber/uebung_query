@@ -28,12 +28,8 @@ int pushJQ(JobQueue_t* pJQ, Job_t* pJob) {
 			
 		}
 		//Zeiger auf neues First?
-		if (pVorherigesElement == NULL) {
-			pJQ->first = pNewElement;
-		}
-		else {
-			pVorherigesElement->next = pNewElement;
-		}
+		if (pVorherigesElement == NULL) pJQ->first = pNewElement;
+		else pVorherigesElement->next = pNewElement;
 		//Zeiger auf neues Last?
 		if (pNewElement->next == NULL) {
 			pJQ->last = pNewElement;
