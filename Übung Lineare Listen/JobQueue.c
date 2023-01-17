@@ -36,8 +36,6 @@ int pushJQ(JobQueue_t* pJQ, Job_t* pJob) {
 		if (pNewElement->next == NULL) {
 			pJQ->last = pNewElement;
 		}
-
-		return 0;
 	}
 	pJQ->count++;
 	return 0;

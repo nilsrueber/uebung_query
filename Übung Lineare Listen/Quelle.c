@@ -23,13 +23,16 @@ int main() {
 	printf("Job Queue 1: \n");
 	printJQ(&jobQueue_1);
 
-	
+	printf("%i\n", jobQueue_1.count);
 	Job_5 = popJQ(&jobQueue_1);
 
 	printf("Job Queue 1 nach Pop: \n");
 	printJQ(&jobQueue_1);
 
-	printf("%i \t%s wurde geloescht\n", Job_5.prio, Job_5.desc)
+	printf("%i\n", jobQueue_1.count);
+
+	printf("%i \t%s wurde geloescht\n", Job_5.prio, Job_5.desc);
+
 
 
 	return 0;
