@@ -1,0 +1,5 @@
+65	Arbeiten
+60	Nichts
+50	Urlaubplanung
+13	Haende waschen
+3	Schlafen

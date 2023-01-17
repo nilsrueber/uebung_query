@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include "jobqueue.h"
 
@@ -32,6 +34,11 @@ int main() {
 	printf("%i\n", jobQueue_1.count);
 
 	printf("%i \t%s wurde geloescht\n", Job_5.prio, Job_5.desc);
+
+	safeJQ(&jobQueue_1);
+
+	return(0);
+
 
 
 

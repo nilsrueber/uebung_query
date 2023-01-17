@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h> // Zuerst werden Systendatein dann Userdatein inkludiert!
 #include <stdlib.h>
 #include "JobQueue.h"
@@ -78,5 +80,23 @@ void printJQ(JobQueue_t* pJQ) {
 		for (; pEL != NULL; pEL = pEL->next) {				// Element für Element wird abgegangen, bis kein Element mehr das ist!
 			printf("%i\t%s\n", pEL->Job.prio, pEL->Job.desc);
 		}
+	}
+}
+
+// Gibt alle aufgaben in der angegeben Liste in eine Datei aus
+void safeJQ(JobQueue_t* pJQ) {
+	FILE* fp;
+	if (pJQ->first == NULL) {				// WEnn die erste Aufgabe leer ist gebe folgendes aus!
+		fp = fopen("C:/Users/nilsr/Source/Repos/nilsrueber/uebung_query/Übung Lineare Listen/file.txt", "w+");
+		fprintf(fp, "Leere Queue\n");
+		fclose(fp);
+	}
+	else {
+		QueueEl_t* pEL = pJQ->first;			// Pointer pEL auf erstes Element aller Elemente in der Queue
+		fp = fopen("C:/Users/nilsr/Source/Repos/nilsrueber/uebung_query/Übung Lineare Listen/file.txt", "w");
+		for (; pEL != NULL; pEL = pEL->next) {				// Element für Element wird abgegangen, bis kein Element mehr das ist!
+			fprintf(fp, "%i\t%s\n", pEL->Job.prio, pEL->Job.desc);
+		}
+		fclose(fp);
 	}
 }
